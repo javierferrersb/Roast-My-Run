@@ -4,6 +4,9 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Roast My Run",
   description: "AI-powered roasting of your Strava runs",
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({
