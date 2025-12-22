@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Roast My Run",
-  description: "AI-powered roasting of your Strava activities",
+  description: "AI-powered roasting of your Strava runs",
 };
 
 export default function RootLayout({
@@ -14,7 +14,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <main className="main-content bg-orange-200 min-h-screen">
+        <main className="main-content min-h-screen bg-orange-200">
           {children}
         </main>
       </body>

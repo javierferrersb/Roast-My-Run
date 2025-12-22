@@ -1,8 +1,3 @@
-/**
- * ErrorAlert Component
- *
- * Displays error messages
- */
 interface ErrorAlertProps {
   message: string | null;
 }

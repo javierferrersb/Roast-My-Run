@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-/* Global overrides */
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -17,7 +16,6 @@ body {
   --color-strava: #fc4c02;
 }
 
-/* Faster skeleton pulse animation */
 @keyframes fast-pulse {
   0%,
   100% {

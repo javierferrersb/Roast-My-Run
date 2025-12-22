@@ -35,7 +35,6 @@ export default function Home() {
       const response = await fetch("/api/activities");
 
       if (response.status === 401) {
-        console.log("User not authenticated with Strava");
         setActivities([]);
         return;
       }
@@ -47,7 +46,6 @@ export default function Home() {
       const data: StravaActivity[] = await response.json();
       setActivities(data);
     } catch (err) {
-      console.error("Error fetching activities:", err);
       setError("Failed to fetch activities. Please try again.");
     } finally {
       setIsLoadingActivities(false);
@@ -83,7 +81,6 @@ export default function Home() {
       const data = await response.json();
       setRoastResult(data.roast);
     } catch (err) {
-      console.error("Error roasting activity:", err);
       setError("Failed to roast activity. Please try again.");
     } finally {
       setIsLoading(false);
@@ -97,7 +94,7 @@ export default function Home() {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
-      console.error("Failed to copy:", err);
+      setError("Failed to copy to clipboard");
     }
   };
 
@@ -108,17 +105,14 @@ export default function Home() {
       });
 
       if (response.ok) {
-        // Clear local state
         setActivities([]);
         setSelectedActivityId(null);
         setRoastResult(null);
         setError(null);
         setCopied(false);
-        // Redirect to home
         window.location.href = "/";
       }
     } catch (err) {
-      console.error("Logout failed:", err);
       setError("Failed to logout");
     }
   };
@@ -134,7 +128,7 @@ export default function Home() {
           text: shareText,
         });
       } catch (err) {
-        console.error("Failed to share:", err);
+        // User cancelled share dialog
       }
     } else {
       try {
@@ -142,7 +136,7 @@ export default function Home() {
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
       } catch (err) {
-        console.error("Failed to copy:", err);
+        setError("Failed to copy to clipboard");
       }
     }
   };

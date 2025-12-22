@@ -1,8 +1,3 @@
-/**
- * HeroSection Component
- *
- * Displays description, Strava login button, or activity selector + roast results
- */
 import { ActivitySelector } from "./ActivitySelector";
 import { ActivitySelectorSkeleton } from "./ActivitySelectorSkeleton";
 import { ResultDisplay } from "./ResultDisplay";
@@ -43,10 +38,9 @@ export function HeroSection({
 
   return (
     <section className="px-4 py-8 sm:px-6 sm:py-12">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 items-start gap-6 sm:grid-cols-2 sm:gap-12">
-        {/* Left Side - Content or Activity Selector */}
+      <div className="mx-auto max-w-7xl">
         {!isSignedIn ? (
-          <div className="space-y-6 border-4 border-black bg-white p-4 sm:space-y-8 sm:p-8">
+          <div className="mx-auto max-w-lg space-y-6 border-4 border-black bg-white p-4 sm:space-y-8 sm:p-8">
             <div>
               <h2 className="mb-3 text-2xl font-black text-black sm:mb-4 sm:text-4xl">
                 ABOUT
@@ -61,7 +55,7 @@ export function HeroSection({
             {/* Strava Button */}
             <button
               onClick={onStravaLogin}
-              className="bg-strava hover:border-strava w-full cursor-pointer border-3 border-black px-4 py-3 text-sm font-black text-white uppercase transition-all hover:bg-black sm:w-auto sm:px-8 sm:py-4 sm:text-lg"
+              className="bg-strava hover:border-strava w-full border-3 border-black px-4 py-3 text-sm font-black text-white uppercase transition-all hover:cursor-pointer hover:bg-black sm:w-auto sm:px-8 sm:py-4 sm:text-lg"
             >
               CONNECT WITH STRAVA
             </button>
@@ -69,33 +63,35 @@ export function HeroSection({
         ) : isLoadingActivities ? (
           <ActivitySelectorSkeleton />
         ) : (
-          <ActivitySelector
-            activities={activities}
-            selectedActivityId={selectedActivityId || null}
-            isLoadingActivities={isLoadingActivities}
-            isRoasting={isRoasting}
-            onSelectActivity={onSelectActivity || (() => {})}
-            onRoast={onRoast || (() => {})}
-          />
-        )}
+          <div className="mx-auto grid max-w-7xl grid-cols-1 items-start gap-6 sm:grid-cols-2 sm:gap-12">
+            <ActivitySelector
+              activities={activities}
+              selectedActivityId={selectedActivityId || null}
+              isLoadingActivities={isLoadingActivities}
+              isRoasting={isRoasting}
+              onSelectActivity={onSelectActivity || (() => {})}
+              onRoast={onRoast || (() => {})}
+            />
 
-        {/* Right Side - Roast Results */}
-        {isSignedIn && (
-          <div>
-            {roast || isLoading ? (
-              <ResultDisplay
-                roast={roast}
-                isLoading={isLoading}
-                onRetry={onRetry || (() => {})}
-                onCopy={onCopy || (() => {})}
-                onShare={onShare || (() => {})}
-                isCopied={isCopied}
-              />
-            ) : (
-              <div className="border-4 border-black bg-white p-8 text-center">
-                <p className="font-mono text-lg text-gray-600">
-                  Select a run and click ROAST to get started
-                </p>
+            {/* Right Side - Roast Results */}
+            {isSignedIn && (
+              <div>
+                {roast || isLoading ? (
+                  <ResultDisplay
+                    roast={roast}
+                    isLoading={isLoading}
+                    onRetry={onRetry || (() => {})}
+                    onCopy={onCopy || (() => {})}
+                    onShare={onShare || (() => {})}
+                    isCopied={isCopied}
+                  />
+                ) : (
+                  <div className="border-4 border-black bg-white p-8 text-center">
+                    <p className="font-mono text-lg text-gray-600">
+                      Select a run and click ROAST to get started
+                    </p>
+                  </div>
+                )}
               </div>
             )}
           </div>

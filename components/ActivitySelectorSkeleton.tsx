@@ -1,8 +1,3 @@
-/**
- * ActivitySelectorSkeleton Component
- *
- * Skeleton loader for ActivitySelector while activities are loading
- */
 export function ActivitySelectorSkeleton() {
   return (
     <div className="space-y-6 border-4 border-black bg-white p-4 sm:p-8">
@@ -18,7 +13,7 @@ export function ActivitySelectorSkeleton() {
         </div>
 
         {/* Skeleton button */}
-        <div className="animate-fast-pulse h-10 w-full border-3 border-black bg-gray-300 px-4 sm:h-12 sm:w-auto sm:px-8"></div>
+        <div className="animate-fast-pulse h-10 w-28 border-3 border-black bg-gray-300 px-4 sm:h-12"></div>
       </div>
     </div>
   );
