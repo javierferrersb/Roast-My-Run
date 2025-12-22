@@ -1,85 +1,43 @@
 # Roast My Run
 
-A fun web app that connects to your Strava account and generates humorous AI roasts of your running activities.
-
-## Features
-
-- 🏃 **Strava Integration**: Connect your Strava account via OAuth
-- 🤖 **AI Roasting**: Get your runs roasted by Google Gemini AI
-- 📱 **Responsive Design**: Works seamlessly on desktop, tablet, and mobile
-- 🎨 **Brutalist UI**: Bold, high-contrast design
+Connect your Strava account and get AI-generated roasts of your running activities using Google Gemini.
 
 ## Prerequisites
 
 - Node.js 18+
-- pnpm (or npm/yarn)
-- Strava API credentials
-- Google Gemini API key
+- pnpm
+- Strava API credentials (<https://www.strava.com/settings/api>)
+- Google Gemini API key (<https://ai.google.dev>)
 
 ## Setup
 
-1. Clone the repository
+1. Clone and install
 
-   ```bash
-   git clone <repository-url>
-   cd roast-my-run
-   ```
+```bash
+git clone <repository-url>
+cd roast-my-run
+pnpm install
+```
 
-2. Install dependencies
+1. Configure environment variables
 
-   ```bash
-   pnpm install
-   ```
+Copy `.env.example` to `.env.local` and fill in:
 
-3. Configure environment variables
-   - Copy `.env.example` to `.env.local`
-   - Fill in your Strava OAuth credentials (get from <https://www.strava.com/settings/api>)
-   - Add your Google Gemini API key (get from <https://ai.google.dev>)
+- `NEXT_PUBLIC_STRAVA_CLIENT_ID`
+- `STRAVA_CLIENT_SECRET`
+- `NEXT_PUBLIC_GEMINI_API_KEY`
 
-4. Run development server
+1. Run development server
 
-   ```bash
-   pnpm dev
-   ```
+```bash
+pnpm dev
+```
 
-   Open <http://localhost:3000> in your browser.
+Visit <http://localhost:3000>
 
-## Building for Production
+## Build for Production
 
 ```bash
 pnpm build
 pnpm start
 ```
-
-## Tech Stack
-
-- **Framework**: Next.js 14 (App Router)
-- **UI**: React 18 + Tailwind CSS
-- **AI**: Google Generative AI SDK (Gemini 2.5 Flash)
-- **Authentication**: Strava OAuth 2.0
-- **Language**: TypeScript
-
-## Project Structure
-
-```
-├── app/
-│   ├── api/
-│   │   ├── activities/route.ts    # Fetch user's runs
-│   │   ├── roast/route.ts          # Generate AI roast
-│   │   └── auth/
-│   │       └── strava/
-│   │           ├── callback/       # OAuth callback handler
-│   │           └── logout/         # Logout endpoint
-│   ├── layout.tsx                   # Root layout
-│   ├── page.tsx                     # Main page
-│   └── globals.css                  # Global styles
-├── components/                      # React components
-├── services/                        # Strava API service
-├── lib/                             # Utilities (OAuth, markdown parsing)
-├── types/                           # TypeScript interfaces
-└── public/                          # Static assets
-```
-
-## License
-
-MIT
