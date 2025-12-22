@@ -4,6 +4,7 @@
  * Displays description, Strava login button, or activity selector + roast results
  */
 import { ActivitySelector } from "./ActivitySelector";
+import { ActivitySelectorSkeleton } from "./ActivitySelectorSkeleton";
 import { ResultDisplay } from "./ResultDisplay";
 import { StravaActivity } from "@/types/strava";
 
@@ -38,17 +39,19 @@ export function HeroSection({
   onShare,
   isCopied = false,
 }: HeroSectionProps) {
-  const isSignedIn = activities.length > 0;
+  const isSignedIn = activities.length > 0 || isLoadingActivities;
 
   return (
-    <section className="px-6 py-12">
-      <div className="mx-auto grid max-w-7xl grid-cols-2 items-start gap-12">
+    <section className="px-4 py-8 sm:px-6 sm:py-12">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 items-start gap-6 sm:grid-cols-2 sm:gap-12">
         {/* Left Side - Content or Activity Selector */}
         {!isSignedIn ? (
-          <div className="space-y-8 border-4 border-black bg-white p-8">
+          <div className="space-y-6 border-4 border-black bg-white p-4 sm:space-y-8 sm:p-8">
             <div>
-              <h2 className="mb-4 text-4xl font-black text-black">ABOUT</h2>
-              <p className="font-mono text-base leading-relaxed text-black">
+              <h2 className="mb-3 text-2xl font-black text-black sm:mb-4 sm:text-4xl">
+                ABOUT
+              </h2>
+              <p className="font-mono text-xs leading-relaxed text-black sm:text-base">
                 Tired of soft, supportive running communities? Connect your
                 Strava, pick a run, and let an elite AI coach roast your pace,
                 effort, and HR zones. No excuses. No mercy. Only truth.
@@ -58,11 +61,13 @@ export function HeroSection({
             {/* Strava Button */}
             <button
               onClick={onStravaLogin}
-              className="bg-strava hover:border-strava cursor-pointer border-3 border-black px-8 py-4 text-lg font-black text-white uppercase transition-all hover:bg-black"
+              className="bg-strava hover:border-strava w-full cursor-pointer border-3 border-black px-4 py-3 text-sm font-black text-white uppercase transition-all hover:bg-black sm:w-auto sm:px-8 sm:py-4 sm:text-lg"
             >
               CONNECT WITH STRAVA
             </button>
           </div>
+        ) : isLoadingActivities ? (
+          <ActivitySelectorSkeleton />
         ) : (
           <ActivitySelector
             activities={activities}

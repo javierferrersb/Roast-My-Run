@@ -25,12 +25,14 @@ export function ResultDisplay({
   }
 
   return (
-    <div className="border-4 border-black bg-red-100 p-8 space-y-6">
+    <div className="space-y-6 border-4 border-black bg-red-100 p-4 sm:p-8">
       {/* Result Text */}
       {roast && (
         <div className="space-y-4">
-          <h2 className="text-3xl font-black text-black">YOUR ROAST</h2>
-          <p className="text-base font-mono text-black leading-relaxed bg-white border-3 border-black p-6">
+          <h2 className="text-2xl font-black text-black sm:text-3xl">
+            YOUR ROAST
+          </h2>
+          <p className="border-3 border-black bg-white p-4 font-mono text-sm leading-relaxed text-black sm:p-6 sm:text-base">
             {roast}
           </p>
         </div>
@@ -40,7 +42,7 @@ export function ResultDisplay({
       {isLoading && (
         <div className="flex items-center gap-3">
           <div className="animate-spin text-2xl">🔥</div>
-          <p className="font-mono text-black font-bold">
+          <p className="font-mono text-xs font-bold text-black sm:text-sm">
             Generating your roast...
           </p>
         </div>
@@ -48,26 +50,26 @@ export function ResultDisplay({
 
       {/* Action Buttons */}
       {roast && (
-        <div className="flex gap-3">
+        <div className="flex flex-col gap-2 sm:flex-row sm:gap-3">
           <button
             onClick={onCopy}
-            className={`border-3 border-black px-6 py-2 font-black uppercase transition-all ${
+            className={`border-3 border-black px-4 py-2 text-xs font-black uppercase transition-all sm:px-6 sm:py-2 sm:text-sm ${
               isCopied
-                ? "bg-orange-400 text-black border-black"
-                : "bg-white hover:bg-orange-400 text-black"
+                ? "border-black bg-orange-400 text-black"
+                : "bg-white text-black hover:bg-orange-400"
             }`}
           >
             {isCopied ? "✓ COPIED" : "COPY"}
           </button>
           <button
             onClick={onShare}
-            className="border-3 border-black bg-white text-black px-6 py-2 font-black uppercase hover:bg-orange-400 transition-all"
+            className="border-3 border-black bg-white px-4 py-2 text-xs font-black text-black uppercase transition-all hover:bg-orange-400 sm:px-6 sm:py-2 sm:text-sm"
           >
             SHARE
           </button>
           <button
             onClick={onRetry}
-            className="border-3 border-black bg-white text-black px-6 py-2 font-black uppercase hover:bg-orange-400 transition-all"
+            className="border-3 border-black bg-white px-4 py-2 text-xs font-black text-black uppercase transition-all hover:bg-orange-400 sm:px-6 sm:py-2 sm:text-sm"
           >
             REGENERATE
           </button>

@@ -21,19 +21,19 @@ export function ActivitySelector({
   onRoast,
 }: ActivitySelectorProps) {
   return (
-    <div className="bg-white border-4 border-black p-8 space-y-6">
-      <h2 className="text-3xl font-black text-black">ROAST</h2>
+    <div className="space-y-6 border-4 border-black bg-white p-4 sm:p-8">
+      <h2 className="text-2xl font-black text-black sm:text-3xl">ROAST</h2>
 
-      <div className="flex gap-4 items-end">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:gap-4">
         <div className="flex-1">
-          <label className="block text-sm font-black mb-3 text-black">
+          <label className="mb-2 block text-xs font-black text-black sm:mb-3 sm:text-sm">
             SELECT YOUR RUN
           </label>
           <select
             value={selectedActivityId || ""}
             onChange={(e) => onSelectActivity(Number(e.target.value))}
             disabled={isLoadingActivities}
-            className="w-full border-3 border-black px-4 py-3 font-mono text-base bg-white text-black disabled:opacity-50 focus:outline-none focus:bg-red-100"
+            className="w-full border-3 border-black bg-white px-3 py-2 font-mono text-sm text-black focus:bg-red-100 focus:outline-none disabled:opacity-50 sm:px-4 sm:py-3"
           >
             <option value="">Choose a run...</option>
             {activities.map((activity) => (
@@ -48,7 +48,7 @@ export function ActivitySelector({
         <button
           onClick={onRoast}
           disabled={isRoasting || !selectedActivityId}
-          className="border-3 border-black bg-red-600 text-white px-8 py-3 font-black uppercase disabled:opacity-50 hover:bg-black hover:text-red-600 transition-all h-12"
+          className="h-10 border-3 border-black bg-red-600 px-4 py-2 font-black text-white uppercase transition-all hover:bg-black hover:text-red-600 disabled:opacity-50 sm:h-12 sm:px-8 sm:py-3"
         >
           {isRoasting ? "🔥" : "ROAST"}
         </button>

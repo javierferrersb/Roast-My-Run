@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [roastResult, setRoastResult] = useState<string | null>(null);
-  const [isLoadingActivities, setIsLoadingActivities] = useState(false);
+  const [isLoadingActivities, setIsLoadingActivities] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [activities, setActivities] = useState<StravaActivity[]>([]);
   const [selectedActivityId, setSelectedActivityId] = useState<number | null>(
@@ -101,6 +101,28 @@ export default function Home() {
     }
   };
 
+  const handleLogout = async () => {
+    try {
+      const response = await fetch("/api/auth/logout", {
+        method: "POST",
+      });
+
+      if (response.ok) {
+        // Clear local state
+        setActivities([]);
+        setSelectedActivityId(null);
+        setRoastResult(null);
+        setError(null);
+        setCopied(false);
+        // Redirect to home
+        window.location.href = "/";
+      }
+    } catch (err) {
+      console.error("Logout failed:", err);
+      setError("Failed to logout");
+    }
+  };
+
   const handleShare = async () => {
     if (!roastResult) return;
     const shareText = `Check out my run roast: "${roastResult}"`;
@@ -127,7 +149,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
-      <Header />
+      <Header isSignedIn={activities.length > 0} onLogout={handleLogout} />
 
       <HeroSection
         onStravaLogin={handleStravaLogin}

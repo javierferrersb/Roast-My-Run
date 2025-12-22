@@ -16,3 +16,18 @@ body {
 @theme {
   --color-strava: #fc4c02;
 }
+
+/* Faster skeleton pulse animation */
+@keyframes fast-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.animate-fast-pulse {
+  animation: fast-pulse 0.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
