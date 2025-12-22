@@ -19,7 +19,7 @@ cd roast-my-run
 pnpm install
 ```
 
-1. Configure environment variables
+2. Configure environment variables
 
 Copy `.env.example` to `.env.local` and fill in:
 
@@ -27,7 +27,7 @@ Copy `.env.example` to `.env.local` and fill in:
 - `STRAVA_CLIENT_SECRET`
 - `NEXT_PUBLIC_GEMINI_API_KEY`
 
-1. Run development server
+3. Run development server
 
 ```bash
 pnpm dev
