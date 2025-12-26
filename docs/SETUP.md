@@ -39,17 +39,7 @@ After creating your credentials, add them to `.env.local`:
 ```env
 NEXT_PUBLIC_STRAVA_CLIENT_ID=your_client_id_here
 STRAVA_CLIENT_SECRET=your_client_secret_here
-STRAVA_REDIRECT_URI=http://localhost:3000/api/auth/strava/callback
-```
-
-## Google Gemini API Setup
-
-1. Go to [Google AI Studio](https://ai.google.dev)
-2. Create a new API key
-3. Add to `.env.local`:
-
-```env
-NEXT_PUBLIC_GEMINI_API_KEY=your_api_key_here
+GEMINI_API_KEY=your_api_key_here
 ```
 
 ## Testing OAuth Flow
