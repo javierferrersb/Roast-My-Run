@@ -46,5 +46,9 @@
     "de": "Deutsch",
     "es": "Español",
     "fr": "Français"
+  },
+  "footer": {
+    "madeWith": "Fait avec ❤️ depuis l'Espagne",
+    "github": "Voir sur GitHub"
   }
 }
