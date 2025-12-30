@@ -1,3 +1,6 @@
+"use client";
+
+import { useTranslations } from "next-intl";
 import { ActivitySelector } from "./ActivitySelector";
 import { ActivitySelectorSkeleton } from "./ActivitySelectorSkeleton";
 import { ResultDisplay } from "./ResultDisplay";
@@ -34,6 +37,7 @@ export function HeroSection({
   onShare,
   isCopied = false,
 }: HeroSectionProps) {
+  const t = useTranslations("hero");
   const isSignedIn = activities.length > 0 || isLoadingActivities;
 
   return (
@@ -43,12 +47,10 @@ export function HeroSection({
           <div className="mx-auto max-w-lg space-y-6 border-4 border-black bg-white p-4 sm:space-y-8 sm:p-8">
             <div>
               <h2 className="mb-3 text-2xl font-black text-black sm:mb-4 sm:text-4xl">
-                ABOUT
+                {t("about")}
               </h2>
               <p className="font-mono text-xs leading-relaxed text-black sm:text-base">
-                Tired of soft, supportive running communities? Connect your
-                Strava, pick a run, and let an elite AI coach roast your pace,
-                effort, and HR zones. No excuses. No mercy. Only truth.
+                {t("aboutText")}
               </p>
             </div>
 
@@ -57,7 +59,7 @@ export function HeroSection({
               onClick={onStravaLogin}
               className="bg-strava hover:border-strava w-full border-3 border-black px-4 py-3 text-sm font-black text-white uppercase transition-all hover:cursor-pointer hover:bg-black sm:w-auto sm:px-8 sm:py-4 sm:text-lg"
             >
-              CONNECT WITH STRAVA
+              {t("connectStrava")}
             </button>
           </div>
         ) : isLoadingActivities ? (
@@ -88,7 +90,7 @@ export function HeroSection({
                 ) : (
                   <div className="border-4 border-black bg-white p-8 text-center">
                     <p className="font-mono text-lg text-gray-600">
-                      Select a run and click ROAST to get started
+                      {t("selectPrompt")}
                     </p>
                   </div>
                 )}

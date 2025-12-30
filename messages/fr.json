@@ -1,0 +1,50 @@
+{
+  "metadata": {
+    "title": "Roast My Run",
+    "description": "Des critiques alimentées par l'IA de vos courses Strava"
+  },
+  "header": {
+    "title": "ROAST MY RUN",
+    "subtitle": "Laissez l'IA détruire vos courses",
+    "logout": "DÉCONNEXION"
+  },
+  "hero": {
+    "about": "À PROPOS DE CETTE APP",
+    "aboutText": "Fatigué des communautés de coureurs doux et bienveillants ? Connectez votre Strava, choisissez une course et laissez un entraîneur d'élite alimenté par l'IA critiquer votre allure, vos efforts et vos zones de fréquence cardiaque. Pas d'excuses. Pas de pitié. Que la vérité.",
+    "connectStrava": "SE CONNECTER AVEC STRAVA",
+    "selectPrompt": "Sélectionnez une course et cliquez sur ROAST pour commencer"
+  },
+  "activitySelector": {
+    "title": "ROAST",
+    "selectLabel": "SÉLECTIONNEZ VOTRE COURSE",
+    "placeholder": "Choisissez une course...",
+    "roastButton": "ROAST",
+    "roasting": "🔥"
+  },
+  "result": {
+    "title": "VOTRE ROAST",
+    "generating": "Génération de votre roast...",
+    "copy": "COPIER",
+    "copied": "✓ COPIÉ",
+    "share": "PARTAGER",
+    "regenerate": "RÉGÉNÉRER"
+  },
+  "errors": {
+    "selectActivity": "Veuillez sélectionner d'abord une activité.",
+    "fetchActivities": "Impossible de charger les activités. Veuillez réessayer.",
+    "generateRoast": "Impossible de générer le roast. Veuillez réessayer.",
+    "logout": "Erreur lors de la déconnexion",
+    "clipboard": "Erreur lors de la copie dans le presse-papiers"
+  },
+  "share": {
+    "title": "Roast My Run",
+    "text": "Regardez mon roast de course : \"{roast}\""
+  },
+  "language": {
+    "label": "Langue",
+    "en": "English",
+    "de": "Deutsch",
+    "es": "Español",
+    "fr": "Français"
+  }
+}
