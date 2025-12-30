@@ -1,13 +1,17 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { Header } from "@/components/Header";
 import { HeroSection } from "@/components/HeroSection";
 import { ErrorAlert } from "@/components/ErrorAlert";
 import { buildStravaOAuthUrl } from "@/lib/oauthHelper";
+import { useLocale } from "@/i18n/LocaleContext";
 import { StravaActivity } from "@/types/strava";
 import { useEffect, useState } from "react";
 
 export default function Home() {
+  const t = useTranslations();
+  const { locale } = useLocale();
   const [isLoading, setIsLoading] = useState(false);
   const [roastResult, setRoastResult] = useState<string | null>(null);
   const [isLoadingActivities, setIsLoadingActivities] = useState(true);
@@ -46,7 +50,7 @@ export default function Home() {
       const data: StravaActivity[] = await response.json();
       setActivities(data);
     } catch (err) {
-      setError("Failed to fetch activities. Please try again.");
+      setError(t("errors.fetchActivities"));
     } finally {
       setIsLoadingActivities(false);
     }
@@ -54,7 +58,7 @@ export default function Home() {
 
   const handleRoastActivity = async () => {
     if (!selectedActivityId) {
-      setError("Please select an activity first.");
+      setError(t("errors.selectActivity"));
       return;
     }
 
@@ -70,6 +74,7 @@ export default function Home() {
         },
         body: JSON.stringify({
           activityId: selectedActivityId,
+          locale: locale,
         }),
       });
 
@@ -81,7 +86,7 @@ export default function Home() {
       const data = await response.json();
       setRoastResult(data.roast);
     } catch (err) {
-      setError("Failed to roast activity. Please try again.");
+      setError(t("errors.generateRoast"));
     } finally {
       setIsLoading(false);
     }
@@ -94,7 +99,7 @@ export default function Home() {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
-      setError("Failed to copy to clipboard");
+      setError(t("errors.clipboard"));
     }
   };
 
@@ -113,18 +118,18 @@ export default function Home() {
         window.location.href = "/";
       }
     } catch (err) {
-      setError("Failed to logout");
+      setError(t("errors.logout"));
     }
   };
 
   const handleShare = async () => {
     if (!roastResult) return;
-    const shareText = `Check out my run roast: "${roastResult}"`;
+    const shareText = t("share.text", { roast: roastResult });
 
     if (navigator.share) {
       try {
         await navigator.share({
-          title: "Roast My Run",
+          title: t("share.title"),
           text: shareText,
         });
       } catch (err) {
@@ -136,7 +141,7 @@ export default function Home() {
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
       } catch (err) {
-        setError("Failed to copy to clipboard");
+        setError(t("errors.clipboard"));
       }
     }
   };

@@ -1,0 +1,50 @@
+{
+  "metadata": {
+    "title": "Roast My Run",
+    "description": "KI-gestützte Läufe-Kritik für deine Strava-Aktivitäten"
+  },
+  "header": {
+    "title": "ROAST MY RUN",
+    "subtitle": "Lass deine Läufe von KI zerstören",
+    "logout": "ABMELDEN"
+  },
+  "hero": {
+    "about": "ÜBER DIE APP",
+    "aboutText": "Hast du genug von sanften, unterstützenden Lauf-Communities? Verbinde dein Strava, wähle einen Lauf und lass einen Elite-KI-Trainer dein Tempo, deine Anstrengung und deine Herzfrequenzzonen kritisieren. Keine Ausreden. Keine Gnade. Nur die Wahrheit.",
+    "connectStrava": "MIT STRAVA VERBINDEN",
+    "selectPrompt": "Wähle einen Lauf und klicke auf RÖSTEN"
+  },
+  "activitySelector": {
+    "title": "RÖSTEN",
+    "selectLabel": "WÄHLE DEINEN LAUF",
+    "placeholder": "Wähle einen Lauf...",
+    "roastButton": "RÖSTEN",
+    "roasting": "🔥"
+  },
+  "result": {
+    "title": "DEIN ROAST",
+    "generating": "Dein Roast wird erstellt...",
+    "copy": "KOPIEREN",
+    "copied": "✓ KOPIERT",
+    "share": "TEILEN",
+    "regenerate": "NEU GENERIEREN"
+  },
+  "errors": {
+    "selectActivity": "Bitte wähle zuerst eine Aktivität aus.",
+    "fetchActivities": "Aktivitäten konnten nicht geladen werden. Bitte versuche es erneut.",
+    "generateRoast": "Roast konnte nicht erstellt werden. Bitte versuche es erneut.",
+    "logout": "Abmelden fehlgeschlagen",
+    "clipboard": "Kopieren in die Zwischenablage fehlgeschlagen"
+  },
+  "share": {
+    "title": "Roast My Run",
+    "text": "Schau dir meinen Lauf-Roast an: \"{roast}\""
+  },
+  "language": {
+    "label": "Sprache",
+    "en": "English",
+    "de": "Deutsch",
+    "es": "Español",
+    "fr": "Français"
+  }
+}

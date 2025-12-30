@@ -1,0 +1,50 @@
+{
+  "metadata": {
+    "title": "Roast My Run",
+    "description": "Críticas potenciadas por IA de tus carreras en Strava"
+  },
+  "header": {
+    "title": "ROAST MY RUN",
+    "subtitle": "Deja que la IA destruya tus carreras",
+    "logout": "CERRAR SESIÓN"
+  },
+  "hero": {
+    "about": "ACERCA DE ESTA APP",
+    "aboutText": "¿Cansado de comunidades de corredores suave y comprensivas? Conecta tu Strava, elige una carrera y deja que un entrenador de élite impulsado por IA critique tu ritmo, esfuerzo y zonas de frecuencia cardíaca. Sin excusas. Sin piedad. Solo la verdad.",
+    "connectStrava": "CONECTAR CON STRAVA",
+    "selectPrompt": "Selecciona una carrera y haz clic en ROAST para comenzar"
+  },
+  "activitySelector": {
+    "title": "ROAST",
+    "selectLabel": "SELECCIONA TU CARRERA",
+    "placeholder": "Elige una carrera...",
+    "roastButton": "ROAST",
+    "roasting": "🔥"
+  },
+  "result": {
+    "title": "TU ROAST",
+    "generating": "Generando tu roast...",
+    "copy": "COPIAR",
+    "copied": "✓ COPIADO",
+    "share": "COMPARTIR",
+    "regenerate": "REGENERAR"
+  },
+  "errors": {
+    "selectActivity": "Por favor, selecciona una actividad primero.",
+    "fetchActivities": "No se pudieron cargar las actividades. Por favor, intenta de nuevo.",
+    "generateRoast": "No se pudo generar el roast. Por favor, intenta de nuevo.",
+    "logout": "Error al cerrar sesión",
+    "clipboard": "Error al copiar al portapapeles"
+  },
+  "share": {
+    "title": "Roast My Run",
+    "text": "Mira mi roast de carrera: \"{roast}\""
+  },
+  "language": {
+    "label": "Idioma",
+    "en": "English",
+    "de": "Deutsch",
+    "es": "Español",
+    "fr": "Français"
+  }
+}

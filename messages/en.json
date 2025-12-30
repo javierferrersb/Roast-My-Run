@@ -1,0 +1,50 @@
+{
+  "metadata": {
+    "title": "Roast My Run",
+    "description": "AI-powered roasting of your Strava runs"
+  },
+  "header": {
+    "title": "ROAST MY RUN",
+    "subtitle": "Get your runs destroyed by AI",
+    "logout": "LOGOUT"
+  },
+  "hero": {
+    "about": "ABOUT",
+    "aboutText": "Tired of soft, supportive running communities? Connect your Strava, pick a run, and let an elite AI coach roast your pace, effort, and HR zones. No excuses. No mercy. Only truth.",
+    "connectStrava": "CONNECT WITH STRAVA",
+    "selectPrompt": "Select a run and click ROAST to get started"
+  },
+  "activitySelector": {
+    "title": "ROAST",
+    "selectLabel": "SELECT YOUR RUN",
+    "placeholder": "Choose a run...",
+    "roastButton": "ROAST",
+    "roasting": "🔥"
+  },
+  "result": {
+    "title": "YOUR ROAST",
+    "generating": "Generating your roast...",
+    "copy": "COPY",
+    "copied": "✓ COPIED",
+    "share": "SHARE",
+    "regenerate": "REGENERATE"
+  },
+  "errors": {
+    "selectActivity": "Please select an activity first.",
+    "fetchActivities": "Failed to fetch activities. Please try again.",
+    "generateRoast": "Failed to roast activity. Please try again.",
+    "logout": "Failed to logout",
+    "clipboard": "Failed to copy to clipboard"
+  },
+  "share": {
+    "title": "Roast My Run",
+    "text": "Check out my run roast: \"{roast}\""
+  },
+  "language": {
+    "label": "Language",
+    "en": "English",
+    "de": "Deutsch",
+    "es": "Español",
+    "fr": "Français"
+  }
+}

@@ -1,3 +1,6 @@
+"use client";
+
+import { useTranslations } from "next-intl";
 import { parseMarkdown } from "@/lib/markdown";
 
 interface ResultDisplayProps {
@@ -17,6 +20,8 @@ export function ResultDisplay({
   onShare,
   isCopied,
 }: ResultDisplayProps) {
+  const t = useTranslations("result");
+
   if (!roast && !isLoading) {
     return null;
   }
@@ -27,7 +32,7 @@ export function ResultDisplay({
       {roast && (
         <div className="space-y-4">
           <h2 className="text-2xl font-black text-black sm:text-3xl">
-            YOUR ROAST
+            {t("title")}
           </h2>
           <p className="border-3 border-black bg-white p-4 font-mono text-sm leading-relaxed text-black sm:p-6 sm:text-base">
             {parseMarkdown(roast)}
@@ -40,7 +45,7 @@ export function ResultDisplay({
         <div className="flex items-center gap-3">
           <div className="animate-fast-pulse text-2xl">🔥</div>
           <p className="animate-fast-pulse font-mono text-xs font-bold text-black sm:text-sm">
-            Generating your roast...
+            {t("generating")}
           </p>
         </div>
       )}
@@ -56,19 +61,19 @@ export function ResultDisplay({
                 : "bg-white text-black hover:bg-orange-400"
             }`}
           >
-            {isCopied ? "✓ COPIED" : "COPY"}
+            {isCopied ? t("copied") : t("copy")}
           </button>
           <button
             onClick={onShare}
             className="border-3 border-black bg-white px-4 py-2 text-xs font-black text-black uppercase transition-all hover:cursor-pointer hover:bg-orange-400 sm:px-6 sm:py-2 sm:text-sm"
           >
-            SHARE
+            {t("share")}
           </button>
           <button
             onClick={onRetry}
             className="border-3 border-black bg-white px-4 py-2 text-xs font-black text-black uppercase transition-all hover:cursor-pointer hover:bg-orange-400 sm:px-6 sm:py-2 sm:text-sm"
           >
-            REGENERATE
+            {t("regenerate")}
           </button>
         </div>
       )}
