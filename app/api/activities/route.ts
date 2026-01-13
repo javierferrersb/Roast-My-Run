@@ -17,12 +17,6 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
     }
 
-    const response = NextResponse.next();
-    // We need to create a response object early if we want to set cookies on it,
-    // but in Next.js App Router API routes, we usually return a response.
-    // However, if we need to return JSON *and* set cookies, we construct the NextResponse first.
-    // Or we can just set headers on the final JSON response.
-
     const url = new URL(request.url);
     const limitParam = url.searchParams.get("limit");
     const limit = limitParam ? parseInt(limitParam, 10) : 50;
