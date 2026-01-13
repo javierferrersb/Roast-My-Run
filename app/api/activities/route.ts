@@ -1,40 +1,78 @@
 import { NextRequest, NextResponse } from "next/server";
+import {
+  getValidAccessToken,
+  getRecentActivities,
+} from "@/services/stravaService";
 
 export async function GET(request: NextRequest) {
   try {
     const accessToken = request.cookies.get("strava_access_token")?.value;
-    if (!accessToken) {
+    const refreshToken = request.cookies.get("strava_refresh_token")?.value;
+    const expiresAt = request.cookies.get("strava_token_expires_at")?.value;
+
+    const { accessToken: validAccessToken, newTokens } =
+      await getValidAccessToken(accessToken, refreshToken, expiresAt);
+
+    if (!validAccessToken) {
       return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
     }
+
+    const response = NextResponse.next();
+    // We need to create a response object early if we want to set cookies on it,
+    // but in Next.js App Router API routes, we usually return a response.
+    // However, if we need to return JSON *and* set cookies, we construct the NextResponse first.
+    // Or we can just set headers on the final JSON response.
 
     const url = new URL(request.url);
     const limitParam = url.searchParams.get("limit");
     const limit = limitParam ? parseInt(limitParam, 10) : 50;
 
-    const activitiesResponse = await fetch(
-      `https://www.strava.com/api/v3/athlete/activities?per_page=${limit}&page=1`,
-      {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      },
+    const activities = await getRecentActivities(validAccessToken, limit);
+
+    // Filter for Run activities
+    const runActivities = activities.filter(
+      (activity) => activity.type === "Run",
     );
 
-    if (!activitiesResponse.ok) {
-      return NextResponse.json(
-        { error: "Failed to fetch activities from Strava" },
-        { status: 500 },
+    const jsonResponse = NextResponse.json(runActivities, { status: 200 });
+
+    if (newTokens) {
+      jsonResponse.cookies.set("strava_access_token", newTokens.access_token, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "lax",
+        maxAge: newTokens.expires_in,
+        path: "/",
+      });
+
+      jsonResponse.cookies.set(
+        "strava_refresh_token",
+        newTokens.refresh_token,
+        {
+          httpOnly: true,
+          secure: process.env.NODE_ENV === "production",
+          sameSite: "lax",
+          maxAge: 60 * 60 * 24 * 30, // 30 days
+          path: "/",
+        },
+      );
+
+      jsonResponse.cookies.set(
+        "strava_token_expires_at",
+        (Date.now() + newTokens.expires_in * 1000).toString(),
+        {
+          httpOnly: true,
+          secure: process.env.NODE_ENV === "production",
+          sameSite: "lax",
+          maxAge: newTokens.expires_in,
+          path: "/",
+        },
       );
     }
 
-    const activities = await activitiesResponse.json();
-    const runActivities = activities.filter(
-      (activity: any) => activity.type === "Run",
-    );
-
-    return NextResponse.json(runActivities, { status: 200 });
+    return jsonResponse;
   } catch (error) {
+    console.error("Error in activities route:", error);
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 },
